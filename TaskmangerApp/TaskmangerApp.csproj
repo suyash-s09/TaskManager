@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+	  <ProjectReference Include="..\AdminLibrary\AdminLibrary\AdminLibrary.csproj" />
     <ProjectReference Include="..\TaskLibrary\TaskLibrary\TaskLibrary.csproj" />
     <ProjectReference Include="..\UserLibrary\UserLibrary\UserLibrary.csproj" />
   </ItemGroup>
