@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "TaskmangerApp/1.0.0": {
+        "dependencies": {
+          "TaskLibrary": "1.0.0",
+          "UserLibrary": "1.0.0"
+        },
+        "runtime": {
+          "TaskmangerApp.dll": {}
+        }
+      },
+      "TaskLibrary/1.0.0": {
+        "runtime": {
+          "TaskLibrary.dll": {}
+        }
+      },
+      "UserLibrary/1.0.0": {
+        "dependencies": {
+          "TaskLibrary": "1.0.0"
+        },
+        "runtime": {
+          "UserLibrary.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TaskmangerApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TaskLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UserLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

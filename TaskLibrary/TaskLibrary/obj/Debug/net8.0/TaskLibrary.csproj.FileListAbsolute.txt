@@ -1,0 +1,11 @@
+C:\Users\developer\Desktop\TaskManger\TaskLibrary\TaskLibrary\bin\Debug\net8.0\TaskLibrary.deps.json
+C:\Users\developer\Desktop\TaskManger\TaskLibrary\TaskLibrary\bin\Debug\net8.0\TaskLibrary.dll
+C:\Users\developer\Desktop\TaskManger\TaskLibrary\TaskLibrary\bin\Debug\net8.0\TaskLibrary.pdb
+C:\Users\developer\Desktop\TaskManger\TaskLibrary\TaskLibrary\obj\Debug\net8.0\TaskLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\developer\Desktop\TaskManger\TaskLibrary\TaskLibrary\obj\Debug\net8.0\TaskLibrary.AssemblyInfoInputs.cache
+C:\Users\developer\Desktop\TaskManger\TaskLibrary\TaskLibrary\obj\Debug\net8.0\TaskLibrary.AssemblyInfo.cs
+C:\Users\developer\Desktop\TaskManger\TaskLibrary\TaskLibrary\obj\Debug\net8.0\TaskLibrary.csproj.CoreCompileInputs.cache
+C:\Users\developer\Desktop\TaskManger\TaskLibrary\TaskLibrary\obj\Debug\net8.0\TaskLibrary.dll
+C:\Users\developer\Desktop\TaskManger\TaskLibrary\TaskLibrary\obj\Debug\net8.0\refint\TaskLibrary.dll
+C:\Users\developer\Desktop\TaskManger\TaskLibrary\TaskLibrary\obj\Debug\net8.0\TaskLibrary.pdb
+C:\Users\developer\Desktop\TaskManger\TaskLibrary\TaskLibrary\obj\Debug\net8.0\ref\TaskLibrary.dll
