@@ -66,7 +66,25 @@ namespace UserLibrary
             }
         }
 
-        
+        public void UpdateStatus(int taskId, string JsonFilePath)
+        {
+            List<Tasks> TaskList = new List<Tasks>();
+            TaskList = ReadTask(JsonFilePath);
+            foreach (Tasks item in TaskList)
+            {
+                if (item.TaskId == taskId)
+                {
+                    item.StatusCompleted = true;
+                }
+            }
+
+            string jsonString = JsonSerializer.Serialize<List<Tasks>>(TaskList);
+            File.WriteAllText(JsonFilePath, jsonString);
+
+
+        }
+
+
 
 
 
