@@ -13,3 +13,4 @@ C:\Users\developer\Desktop\TaskManger\UserLibrary\UserLibrary\obj\Debug\net8.0\U
 C:\Users\developer\Desktop\TaskManger\UserLibrary\UserLibrary\obj\Debug\net8.0\refint\UserLibrary.dll
 C:\Users\developer\Desktop\TaskManger\UserLibrary\UserLibrary\obj\Debug\net8.0\UserLibrary.pdb
 C:\Users\developer\Desktop\TaskManger\UserLibrary\UserLibrary\obj\Debug\net8.0\ref\UserLibrary.dll
+C:\Users\developer\Desktop\TaskManger\UserLibrary\UserLibrary\obj\Debug\net8.0\UserLibrary.sourcelink.json

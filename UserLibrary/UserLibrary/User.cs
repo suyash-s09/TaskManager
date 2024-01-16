@@ -13,23 +13,62 @@ namespace UserLibrary
     {
         private int userId;
         private string password;
-        
+
 
         public void SetUserId(int userId)
         {
             this.userId = userId;
         }
 
-        public void SetUserPassword(string password) {
+        public void SetUserPassword(string password)
+        {
             this.password = password;
         }
 
         public bool ValidateUser(int userId, string password)
         {
-            return (this.userId==userId && this.password==password);
+            return (this.userId == userId && this.password == password);
         }
 
-       
+        public List<Tasks> ReadTask(string JsonFilePath)
+        {
+
+
+            using StreamReader reader = new(JsonFilePath);
+            var json = reader.ReadToEnd();
+            List<Tasks> TaskList = new List<Tasks>();
+
+            List<Tasks> tasks_list_read = JsonSerializer.Deserialize<List<Tasks>>(json);
+
+
+
+            foreach (Tasks item in tasks_list_read)
+            {
+                if (item.UserId == userId)
+                {
+                    TaskList.Add(item);
+                }
+            }
+
+
+
+            return TaskList;
+
+        }
+
+        public void printTasks(string JsonFilePath)
+        {
+            List<Tasks> TaskList = new List<Tasks>();
+            TaskList = ReadTask(JsonFilePath);
+            foreach (Tasks item in TaskList)
+            {
+                Console.WriteLine($" TaskId: {item.TaskId} \n TaskName: {item.TaskName} \n TaskDescription: {item.TaskDescription} \n Status: {item.StatusCompleted}");
+            }
+        }
+
+        
+
+
 
 
 
