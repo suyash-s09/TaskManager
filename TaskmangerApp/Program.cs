@@ -64,6 +64,7 @@ void AdminUI()
         Console.WriteLine("6: Read User");
         Console.WriteLine("7: Update User");
         Console.WriteLine("8: Delete User");
+        Console.WriteLine("back: Go To Dashboard");
         Console.WriteLine("exit: To Exit");
 
         string input = Console.ReadLine();
@@ -100,6 +101,10 @@ void AdminUI()
 
             case "8":
                 admin.DeleteUser(UserjsonFilePath);
+                break;
+
+            case "back":
+                DashBoard();
                 break;
 
             default:
@@ -178,6 +183,7 @@ void UserUI()
         Console.WriteLine("\n");
         Console.WriteLine("1: Read Task");
         Console.WriteLine("2: Update Task Status");
+        Console.WriteLine("back: Go To Dashboard");
         Console.WriteLine("exit: To Exit");
 
         string input = Console.ReadLine();
@@ -189,6 +195,9 @@ void UserUI()
                 break;
 
             case "2":user.UpdateStatus(TaskjsonFilePath);
+                break;
+
+            case "back":DashBoard();
                 break;
 
             default:
