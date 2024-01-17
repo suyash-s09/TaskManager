@@ -58,8 +58,7 @@ namespace AdminLibrary
             List<UserModel> UserList = new List<UserModel>();
             UserList = ReadUser(UserJsonFilePath);
 
-            int index = 0;
-            bool foundUser = false;
+            
 
             while (true)
             {
@@ -112,15 +111,19 @@ namespace AdminLibrary
                 if (s.Trim() != "" && bool.TryParse(s,out _)) break;
                 Console.WriteLine("Enter a valid input !");
             }
+            int index = 0;
+            bool foundUser = false;
 
             while (true)
             {
                 Console.WriteLine("Enter the UserId to which task is assigned: ");
                 string s= Console.ReadLine();
+                index = 0;
+                foundUser = false;
                 if (int.TryParse(s, out _))
                 {
                     t.UserId = Convert.ToInt32(s);
-                    foreach (UserModel item in UserList)
+                    foreach (UserModel item in UserList.ToList())
                     {
                         if (item.UserId == t.UserId)
                         {
@@ -150,6 +153,8 @@ namespace AdminLibrary
             jsonString = JsonSerializer.Serialize<List<UserModel>>(UserList);
             File.WriteAllText(UserJsonFilePath, jsonString);
 
+            Console.WriteLine($"The Task with TaskId : {t.TaskId} successfully created!!...");
+
         }
 
         public void UpdateTask( string JsonFilePath , string UserJsonFilePath)
@@ -177,7 +182,7 @@ namespace AdminLibrary
             bool found = false;
             int index = 0;
 
-            foreach (Tasks item in TaskList)
+            foreach (Tasks item in TaskList.ToList())
             {
                 if (item.TaskId == taskId)
                 {
@@ -227,13 +232,15 @@ namespace AdminLibrary
                 //  TaskList[index].UserId = Convert.ToInt32(s);
                 //if(s.Trim() != "" && int.TryParse(s, out _)) break;
                 //Console.WriteLine("ENter a valid input!");
+                Userindex = 0;
+                foundUser = false;
 
                 Console.WriteLine("Enter the UserId to which task is assigned: ");
                 string s = Console.ReadLine();
                 if (int.TryParse(s, out _))
                 {
                     TaskList[index].UserId = Convert.ToInt32(s);
-                    foreach (UserModel item in UserList)
+                    foreach (UserModel item in UserList.ToList())
                     {
                         if (item.UserId == TaskList[index].UserId)
                         {
@@ -255,6 +262,8 @@ namespace AdminLibrary
             string jsonString = JsonSerializer.Serialize<List<Tasks>>(TaskList);
             File.WriteAllText(JsonFilePath, jsonString);
 
+            Console.WriteLine($"The Task with TaskId: {taskId} successfully updated.\n");
+
 
         }
 
@@ -275,7 +284,7 @@ namespace AdminLibrary
 
             bool found = false;
             
-            foreach (Tasks item in TaskList)
+            foreach (Tasks item in TaskList.ToList())
             {
                 if (item.TaskId == taskId)
                 {
@@ -289,9 +298,11 @@ namespace AdminLibrary
                 Console.WriteLine($"The Task with TaskId: {taskId} does not exist.");
                 return;
             }
-
+            Console.WriteLine($"The Task with TaskId: {taskId} successfully deleted.");
             string jsonString = JsonSerializer.Serialize<List<Tasks>>(TaskList);
             File.WriteAllText(JsonFilePath, jsonString);
+
+            Console.WriteLine($"The Task with TaskId: {taskId} successfully deleted!.\n");
         }
 
         //-------------------------------------------------------------------------------------------------------------------------
@@ -304,7 +315,7 @@ namespace AdminLibrary
 
             List<UserModel> users_list_read = JsonSerializer.Deserialize<List<UserModel>>(json);
 
-            foreach (UserModel item in users_list_read)
+            foreach (UserModel item in users_list_read.ToList())
             {
                 UserList.Add(item);
             }
@@ -341,7 +352,7 @@ namespace AdminLibrary
             
 
             bool found = false;
-            foreach (UserModel item in UserList)
+            foreach (UserModel item in UserList.ToList())
             {
                 if (item.UserId == t.UserId)
                 {
@@ -369,6 +380,8 @@ namespace AdminLibrary
 
             string jsonString = JsonSerializer.Serialize<List<UserModel>>(UserList);
             File.WriteAllText(JsonFilePath, jsonString);
+
+            Console.WriteLine($"The User with UserId: {t.UserId} successfully created.\n");
         }
 
         public void DeleteUser(string JsonFilePath)
@@ -388,7 +401,7 @@ namespace AdminLibrary
 
             bool found = false;
 
-            foreach (UserModel item in UserList)
+            foreach (UserModel item in UserList.ToList())
             {
                 if (item.UserId == userId)
                 {
@@ -405,6 +418,8 @@ namespace AdminLibrary
 
             string jsonString = JsonSerializer.Serialize<List<UserModel>>(UserList);
             File.WriteAllText(JsonFilePath, jsonString);
+
+            Console.WriteLine($"The User with UserId: {userId} successfully deleted.\n");
         }
 
         public void UpdateUser(string JsonFilePath)
@@ -425,7 +440,7 @@ namespace AdminLibrary
             bool found = false;
             int index = 0;
 
-            foreach (UserModel item in UserList)
+            foreach (UserModel item in UserList.ToList())
             {
                 if (item.UserId == userId)
                 {
@@ -461,6 +476,8 @@ namespace AdminLibrary
 
             string jsonString = JsonSerializer.Serialize<List<UserModel>>(UserList);
             File.WriteAllText(JsonFilePath, jsonString);
+
+            Console.WriteLine($"The User with UserId: {userId} successfully updated!\n");
         }
 
     }
