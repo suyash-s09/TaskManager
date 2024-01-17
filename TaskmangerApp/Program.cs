@@ -4,8 +4,16 @@ using AdminLibrary;
 using UserLibrary;
 using TaskLibrary;
 
-string TaskjsonFilePath = "C:/Users/developer/Desktop/TaskManger/Database/tasks.json";
-string UserjsonFilePath = "C:/Users/developer/Desktop/TaskManger/Database/users.json";
+//string TaskjsonFilePath = "../../../../../Database/tasks.json";
+
+
+string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+string sFile = System.IO.Path.Combine(sCurrentDirectory, @"../../../../Database/tasks.json");
+string TaskjsonFilePath = Path.GetFullPath(sFile);
+
+sFile = System.IO.Path.Combine(sCurrentDirectory, @"../../../../Database/users.json");
+
+string UserjsonFilePath = Path.GetFullPath(sFile);
 
 void AdminUI()
 {
