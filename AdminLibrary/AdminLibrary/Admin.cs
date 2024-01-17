@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using TaskLibrary;
 using UserLibrary;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AdminLibrary
 {
@@ -52,20 +55,68 @@ namespace AdminLibrary
             TaskList = ReadTask(JsonFilePath);
             Tasks t = new Tasks();
 
-            Console.WriteLine("Enter the Task Id: ");
-            t.TaskId = Convert.ToInt32(Console.ReadLine());
+            while (true)
+            {
+                Console.WriteLine("Enter the Task Id: ");
+                string s = Console.ReadLine();
+                if(int.TryParse(s, out _))
+                t.TaskId = Convert.ToInt32(s);
+                if (s.Trim() != "" && int.TryParse(s, out _)) break;
+                Console.WriteLine("Enter a valid input !");
+            }
 
-            Console.WriteLine("Enter the Task Name: ");
-            t.TaskName = Console.ReadLine();
+            bool found = false;
+            foreach (Tasks item in TaskList)
+            {
+                if (item.TaskId == t.TaskId)
+                {
+                    found = true;
+                    break;
+                }
+            }
 
-            Console.WriteLine("Enter the Task Description: ");
-            t.TaskDescription = Console.ReadLine();
+            if (found)
+            {
+                Console.WriteLine($"The Task with TaskId : {t.TaskId} already exits!!...");
+                return;
+            }
 
-            Console.WriteLine("Enter the Task Status: ");
-            t.StatusCompleted = Convert.ToBoolean(Console.ReadLine());
+            while (true)
+            {
+                Console.WriteLine("Enter the Task Name: ");
+                t.TaskName = Console.ReadLine();
+                if (t.TaskName.Trim() != "") break;
+                Console.WriteLine("Enter a valid input !");
+            }
 
-            Console.WriteLine("Enter the UserId to which task is assigned: ");
-            t.UserId = Convert.ToInt32(Console.ReadLine());
+            while (true)
+            {
+                Console.WriteLine("Enter the Task Description: ");
+                t.TaskDescription = Console.ReadLine();
+                if (t.TaskDescription.Trim() != "") break;
+                Console.WriteLine("Enter a valid input !");
+            }
+
+            while (true)
+            {
+                Console.WriteLine("Enter the Task Status: ");
+                string s = Console.ReadLine();
+                if (bool.TryParse(s, out _))
+                    t.StatusCompleted = Convert.ToBoolean(s);
+                if (s.Trim() != "" && bool.TryParse(s,out _)) break;
+                Console.WriteLine("Enter a valid input !");
+            }
+
+            while (true)
+            {
+                Console.WriteLine("Enter the UserId to which task is assigned: ");
+                string s= Console.ReadLine();
+                if (int.TryParse(s, out _))
+                    t.UserId = Convert.ToInt32(s);
+                if (s.Trim() != "" && int.TryParse(s, out _)) break;
+                Console.WriteLine("Enter a valid input !");
+            }
+            
 
             TaskList.Add(t);
 
@@ -75,8 +126,17 @@ namespace AdminLibrary
 
         public void UpdateTask( string JsonFilePath)
         {
-            Console.WriteLine("Enter the TaskId to Update:");
-            int taskId = Convert.ToInt32(Console.ReadLine());
+            int taskId = -1;
+            while (true)
+            {
+                Console.WriteLine("Enter the TaskId to Update:");
+                string s = Console.ReadLine() ;
+                if (int.TryParse(s, out _))
+                    taskId = Convert.ToInt32(s);
+                if (s.Trim() != "" && int.TryParse(s, out _)) break;
+                Console.WriteLine("Enter a valid input !");
+            }
+            
             List<Tasks> TaskList = new List<Tasks>();
             TaskList = ReadTask(JsonFilePath);
 
@@ -99,17 +159,42 @@ namespace AdminLibrary
                 return;
             }
 
-            Console.WriteLine("Update the Task Name: ");
-            TaskList[index].TaskName = Console.ReadLine();
+            while (true)
+            {
+                Console.WriteLine("Update the Task Name: ");
+                TaskList[index].TaskName = Console.ReadLine();
+                if (TaskList[index].TaskName.Trim() != "") break;
+                Console.WriteLine("ENter a valid input!");
+            }
 
-            Console.WriteLine("Update the Task Description: ");
-            TaskList[index].TaskDescription = Console.ReadLine();
+            while (true)
+            {
+                Console.WriteLine("Update the Task Description: ");
+                TaskList[index].TaskDescription = Console.ReadLine();
+                if (TaskList[index].TaskDescription.Trim() != "") break;
+                Console.WriteLine("ENter a valid input!");
+            }
 
-            Console.WriteLine("Update the Task Status: ");
-            TaskList[index].StatusCompleted = Convert.ToBoolean(Console.ReadLine());
+            while (true)
+            {
+                Console.WriteLine("Update the Task Status: ");
+                string s = Console.ReadLine();
+                if (bool.TryParse(s, out _))
+                    TaskList[index].StatusCompleted = Convert.ToBoolean(s);
+                if (s.Trim() != "" && bool.TryParse(s, out _)) break;
+                Console.WriteLine("ENter a valid input!");
+            }
 
-            Console.WriteLine("Update the UserId to which task is assigned: ");
-            TaskList[index].UserId = Convert.ToInt32(Console.ReadLine());
+            while (true)
+            {
+                Console.WriteLine("Update the UserId to which task is assigned: ");
+                string s= Console.ReadLine();
+                if (int.TryParse(s, out _))
+                    TaskList[index].UserId = Convert.ToInt32(s);
+                if(s.Trim() != "" && int.TryParse(s, out _)) break;
+                Console.WriteLine("ENter a valid input!");
+            }
+            
 
 
             string jsonString = JsonSerializer.Serialize<List<Tasks>>(TaskList);
@@ -120,8 +205,16 @@ namespace AdminLibrary
 
         public void DeleteTask( string JsonFilePath)
         {
-            Console.WriteLine("Enter the TaskId to Delete:");
-            int taskId = Convert.ToInt32(Console.ReadLine());
+            int taskId = -1;
+            while (true)
+            {
+                Console.WriteLine("Enter the TaskId to Delete:");
+                string s = Console.ReadLine();
+                if (int.TryParse(s, out _))
+                    taskId = Convert.ToInt32(s);
+                if (s.Trim() != "" && int.TryParse(s, out _)) break;
+                Console.WriteLine("Enter a valid input!");
+            }
             List<Tasks> TaskList = new List<Tasks>();
             TaskList = ReadTask(JsonFilePath);
 
@@ -181,11 +274,41 @@ namespace AdminLibrary
             UserList = ReadUser(JsonFilePath);
             UserModel t = new UserModel();
 
-            Console.WriteLine("Enter the UserId: ");
-            t.UserId = Convert.ToInt32(Console.ReadLine());
+            while (true)
+            {
+                Console.WriteLine("Enter the UserId: ");
+                string s = Console.ReadLine();
+                if (int.TryParse(s, out _))
+                    t.UserId = Convert.ToInt32(s);
+                if (s.Trim() != "" && int.TryParse(s, out _)) break;
+                Console.WriteLine("Enter a valid input!");
+            }
+            
 
-            Console.WriteLine("Enter the password: ");
-            t.password = Console.ReadLine();
+            bool found = false;
+            foreach (UserModel item in UserList)
+            {
+                if (item.UserId == t.UserId)
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found)
+            {
+                Console.WriteLine($"The User with UserId : {t.UserId} already exits!!...");
+                return;
+            }
+
+            while (true)
+            {
+                Console.WriteLine("Enter the password: ");
+                t.password = Console.ReadLine();
+                if (t.password.Trim() != "") break;
+                Console.WriteLine("Enter a valid input!");
+            }
+            
 
             UserList.Add(t);
 
@@ -195,8 +318,16 @@ namespace AdminLibrary
 
         public void DeleteUser(string JsonFilePath)
         {
-            Console.WriteLine("Enter the UserId to Delete:");
-            int userId = Convert.ToInt32(Console.ReadLine());
+            int userId = -1;
+            while (true)
+            {
+                Console.WriteLine("Enter the UserId to Delete:");
+                string s = Console.ReadLine();
+                if (int.TryParse(s, out _))
+                    userId = Convert.ToInt32(s);
+                if (s.Trim() != "" && int.TryParse(s, out _)) break;
+                Console.WriteLine("Enter a valid input!");
+            }
             List<UserModel> UserList = new List<UserModel>();
             UserList = ReadUser(JsonFilePath);
 
@@ -223,8 +354,16 @@ namespace AdminLibrary
 
         public void UpdateUser(string JsonFilePath)
         {
-            Console.WriteLine("Enter the UserId to Update:");
-            int userId = Convert.ToInt32(Console.ReadLine());
+            int userId = -1;
+            while (true)
+            {
+                Console.WriteLine("Enter the UserId to Update:");
+                string s = Console.ReadLine();
+                if (int.TryParse(s, out _))
+                    userId = Convert.ToInt32(s);
+                if (s.Trim() != "" && int.TryParse(s, out _)) break;
+                Console.WriteLine("Enter a valid input!");
+            }
             List<UserModel> UserList = new List<UserModel>();
             UserList = ReadUser(JsonFilePath);
 
@@ -246,11 +385,23 @@ namespace AdminLibrary
                 return;
             }
 
-            Console.WriteLine("Update the UserId: ");
-            UserList[index].UserId = Convert.ToInt32(Console.ReadLine());
+            while (true)
+            {
+                Console.WriteLine("Update the UserId: ");
+                string s = Console.ReadLine();
+                UserList[index].UserId = Convert.ToInt32(s);
+                if (s.Trim() != "" && int.TryParse(s, out _)) break;
+                Console.WriteLine("Enter a valid input!");
+            }
 
-            Console.WriteLine("Update the User password: ");
-            UserList[index].password = Console.ReadLine();
+            while (true)
+            {
+                Console.WriteLine("Update the User password: ");
+                UserList[index].password = Console.ReadLine();
+                if (UserList[index].password.Trim() != "") break;
+                Console.WriteLine("Enter a valid input!");
+            }
+            
 
             string jsonString = JsonSerializer.Serialize<List<UserModel>>(UserList);
             File.WriteAllText(JsonFilePath, jsonString);
