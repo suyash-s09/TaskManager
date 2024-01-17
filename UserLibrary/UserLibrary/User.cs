@@ -9,25 +9,41 @@ using TaskLibrary;
 
 namespace UserLibrary
 {
-    public class User
+    public class UserModel
     {
-        private int userId;
-        private string password;
-
-
+        public int UserId { get; set; }
+        public string password { get; set; }
+    }
+    public class User : UserModel
+    {
+        
         public void SetUserId(int userId)
         {
-            this.userId = userId;
+            this.UserId = userId;
         }
 
         public void SetUserPassword(string password)
         {
             this.password = password;
         }
+        
 
-        public bool ValidateUser(int userId, string password)
+        public bool ValidateUser(int userId, string password, string JsonFilePath)
         {
-            return (this.userId == userId && this.password == password);
+            using StreamReader reader = new(JsonFilePath);
+            var json = reader.ReadToEnd();
+            List<UserModel> TaskList = new List<UserModel>();
+
+            List<UserModel> users_list_read = JsonSerializer.Deserialize<List<UserModel>>(json);
+
+            foreach(UserModel u in users_list_read)
+            {
+                if(u.UserId == userId && u.password==password)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public List<Tasks> ReadTask(string JsonFilePath)
@@ -44,7 +60,7 @@ namespace UserLibrary
 
             foreach (Tasks item in tasks_list_read)
             {
-                if (item.UserId == userId)
+                if (item.UserId == this.UserId)
                 {
                     TaskList.Add(item);
                 }
@@ -62,21 +78,36 @@ namespace UserLibrary
             TaskList = ReadTask(JsonFilePath);
             foreach (Tasks item in TaskList)
             {
+                Console.WriteLine("\n");
                 Console.WriteLine($" TaskId: {item.TaskId} \n TaskName: {item.TaskName} \n TaskDescription: {item.TaskDescription} \n Status: {item.StatusCompleted}");
             }
         }
 
-        public void UpdateStatus(int taskId, string JsonFilePath)
+        public void UpdateStatus(string JsonFilePath)
         {
+            Console.WriteLine("Enter the TaskId to Update:");
+            int taskId = Convert.ToInt32(Console.ReadLine());
+
             List<Tasks> TaskList = new List<Tasks>();
             TaskList = ReadTask(JsonFilePath);
+
+            bool found = false;
+
             foreach (Tasks item in TaskList)
             {
                 if (item.TaskId == taskId)
                 {
+                    found = true;
                     item.StatusCompleted = true;
                 }
             }
+            if (!found)
+            {
+                Console.WriteLine($"The Task with TaskId: {taskId} does not exist.");
+                return;
+            }
+
+            Console.WriteLine($"Status of Task with Task Id: {taskId} Successfully Updated!!");
 
             string jsonString = JsonSerializer.Serialize<List<Tasks>>(TaskList);
             File.WriteAllText(JsonFilePath, jsonString);

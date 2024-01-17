@@ -19,3 +19,5 @@ C:\Users\developer\Desktop\TaskManger\TaskmangerApp\obj\Debug\net8.0\TaskmangerA
 C:\Users\developer\Desktop\TaskManger\TaskmangerApp\obj\Debug\net8.0\TaskmangerApp.genruntimeconfig.cache
 C:\Users\developer\Desktop\TaskManger\TaskmangerApp\obj\Debug\net8.0\ref\TaskmangerApp.dll
 C:\Users\developer\Desktop\TaskManger\TaskmangerApp\obj\Debug\net8.0\TaskmangerApp.sourcelink.json
+C:\Users\developer\Desktop\TaskManger\TaskmangerApp\bin\Debug\net8.0\AdminLibrary.dll
+C:\Users\developer\Desktop\TaskManger\TaskmangerApp\bin\Debug\net8.0\AdminLibrary.pdb

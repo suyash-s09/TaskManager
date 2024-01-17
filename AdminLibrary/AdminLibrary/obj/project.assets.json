@@ -11,6 +11,19 @@
         "runtime": {
           "bin/placeholder/TaskLibrary.dll": {}
         }
+      },
+      "UserLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "TaskLibrary": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/UserLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UserLibrary.dll": {}
+        }
       }
     }
   },
@@ -19,11 +32,17 @@
       "type": "project",
       "path": "../../TaskLibrary/TaskLibrary/TaskLibrary.csproj",
       "msbuildProject": "../../TaskLibrary/TaskLibrary/TaskLibrary.csproj"
+    },
+    "UserLibrary/1.0.0": {
+      "type": "project",
+      "path": "../../UserLibrary/UserLibrary/UserLibrary.csproj",
+      "msbuildProject": "../../UserLibrary/UserLibrary/UserLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "TaskLibrary >= 1.0.0"
+      "TaskLibrary >= 1.0.0",
+      "UserLibrary >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -55,6 +74,9 @@
           "projectReferences": {
             "C:\\Users\\developer\\Desktop\\TaskManger\\TaskLibrary\\TaskLibrary\\TaskLibrary.csproj": {
               "projectPath": "C:\\Users\\developer\\Desktop\\TaskManger\\TaskLibrary\\TaskLibrary\\TaskLibrary.csproj"
+            },
+            "C:\\Users\\developer\\Desktop\\TaskManger\\UserLibrary\\UserLibrary\\UserLibrary.csproj": {
+              "projectPath": "C:\\Users\\developer\\Desktop\\TaskManger\\UserLibrary\\UserLibrary\\UserLibrary.csproj"
             }
           }
         }

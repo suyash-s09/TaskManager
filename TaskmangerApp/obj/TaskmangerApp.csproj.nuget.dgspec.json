@@ -30,6 +30,9 @@
             "projectReferences": {
               "C:\\Users\\developer\\Desktop\\TaskManger\\TaskLibrary\\TaskLibrary\\TaskLibrary.csproj": {
                 "projectPath": "C:\\Users\\developer\\Desktop\\TaskManger\\TaskLibrary\\TaskLibrary\\TaskLibrary.csproj"
+              },
+              "C:\\Users\\developer\\Desktop\\TaskManger\\UserLibrary\\UserLibrary\\UserLibrary.csproj": {
+                "projectPath": "C:\\Users\\developer\\Desktop\\TaskManger\\UserLibrary\\UserLibrary\\UserLibrary.csproj"
               }
             }
           }
