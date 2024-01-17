@@ -130,11 +130,11 @@ void UserUI()
     while (true)
     {
         Console.WriteLine("Enter password: ");
-        string s = Console.ReadLine();
-        if (s.Trim() != "") break;
+        password = Console.ReadLine();
+        if (password.Trim() != "") break;
         Console.WriteLine("Enter a valid input ! Password cannot be empty!!");
     }
-    
+
 
     if (!user.ValidateUser(userId, password, UserjsonFilePath))
     {
@@ -162,10 +162,10 @@ void UserUI()
         string showOrDismiss = Console.ReadLine();
         switch(showOrDismiss)
         {
-            case "show":user.showUpdate(TaskjsonFilePath);
+            case "show":user.showUpdate(TaskjsonFilePath,UserjsonFilePath);
                 break;
 
-            case "dismiss":user.dismissUpdate(TaskjsonFilePath);
+            case "dismiss":user.dismissUpdate(TaskjsonFilePath, UserjsonFilePath);
                 break;
 
             default: Console.WriteLine("Enter a valid input");

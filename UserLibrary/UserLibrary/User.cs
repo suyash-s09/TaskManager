@@ -7,6 +7,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using TaskLibrary;
 
+
 namespace UserLibrary
 {
     public class UserModel
@@ -33,19 +34,36 @@ namespace UserLibrary
         {
             using StreamReader reader = new(JsonFilePath);
             var json = reader.ReadToEnd();
-            List<UserModel> TaskList = new List<UserModel>();
-
             List<UserModel> users_list_read = JsonSerializer.Deserialize<List<UserModel>>(json);
 
-            foreach(UserModel u in users_list_read)
+            foreach(UserModel u in users_list_read.ToList())
             {
                 if(u.UserId == userId && u.password==password)
                 {
                     this.Update = u.Update;
+                    this.UserId = userId;
+                    this.password=password;
                     return true;
                 }
             }
             return false;
+        }
+
+        public List<UserModel> ReadUser(string JsonFilePath)
+        {
+            using StreamReader reader = new(JsonFilePath);
+            var json = reader.ReadToEnd();
+            List<UserModel> UserList = new List<UserModel>();
+
+            List<UserModel> users_list_read = JsonSerializer.Deserialize<List<UserModel>>(json);
+
+            foreach (UserModel item in users_list_read.ToList())
+            {
+                UserList.Add(item);
+            }
+
+            return UserList;
+
         }
 
         public List<Tasks> ReadTask(string JsonFilePath)
@@ -124,10 +142,15 @@ namespace UserLibrary
             File.WriteAllText(JsonFilePath, jsonString);
         }
 
-        public void showUpdate(string JsonFilePath)
+        public void showUpdate(string TaskJsonFilePath,string UserJsonFilePath)
         {
             List<Tasks> TaskList = new List<Tasks>();
-            TaskList = ReadTask(JsonFilePath);
+            TaskList = ReadTask(TaskJsonFilePath);
+
+            List<UserModel> UserList = new List<UserModel>();
+            UserList = ReadUser(UserJsonFilePath);
+
+
             foreach (Tasks item in TaskList)
             {
                 if (!item.IsNew) continue;
@@ -135,20 +158,50 @@ namespace UserLibrary
                 Console.WriteLine("\n");
                 Console.WriteLine($" TaskId: {item.TaskId} \n TaskName: {item.TaskName} \n TaskDescription: {item.TaskDescription} \n Status: {item.StatusCompleted}");
             }
+
+            foreach(UserModel item in UserList)
+            {
+                if(this.UserId == item.UserId)
+                {
+                    item.Update = false;
+                }
+            }
             this.Update = false;
 
+            string jsonString = JsonSerializer.Serialize<List<Tasks>>(TaskList);
+            File.WriteAllText(TaskJsonFilePath, jsonString);
+
+            jsonString = JsonSerializer.Serialize<List<UserModel>>(UserList);
+            File.WriteAllText(UserJsonFilePath, jsonString);
         }
 
-        public void dismissUpdate(string JsonFilePath)
+        public void dismissUpdate(string JsonFilePath,string UserJsonFilePath)
         {
             List<Tasks> TaskList = new List<Tasks>();
             TaskList = ReadTask(JsonFilePath);
+
+            List<UserModel> UserList = new List<UserModel>();
+            UserList = ReadUser(UserJsonFilePath);
             foreach (Tasks item in TaskList)
             {
                 if (!item.IsNew) continue;
                 item.IsNew = false;
             }
+
+            foreach (UserModel item in UserList)
+            {
+                if (this.UserId == item.UserId)
+                {
+                    item.Update = false;
+                }
+            }
             this.Update = false;
+
+            string jsonString = JsonSerializer.Serialize<List<Tasks>>(TaskList);
+            File.WriteAllText(JsonFilePath, jsonString);
+
+            jsonString = JsonSerializer.Serialize<List<UserModel>>(UserList);
+            File.WriteAllText(UserJsonFilePath, jsonString);
 
         }
 
