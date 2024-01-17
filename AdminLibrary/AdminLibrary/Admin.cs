@@ -49,11 +49,17 @@ namespace AdminLibrary
             }
         }
 
-        public void CreateTask(string JsonFilePath)
+        public void CreateTask(string JsonFilePath,string UserJsonFilePath)
         {
             List<Tasks> TaskList = new List<Tasks>();
             TaskList = ReadTask(JsonFilePath);
             Tasks t = new Tasks();
+
+            List<UserModel> UserList = new List<UserModel>();
+            UserList = ReadUser(UserJsonFilePath);
+
+            int index = 0;
+            bool foundUser = false;
 
             while (true)
             {
@@ -99,7 +105,7 @@ namespace AdminLibrary
 
             while (true)
             {
-                Console.WriteLine("Enter the Task Status: ");
+                Console.WriteLine("Enter the Task Complete Status -> \n true : complete \n false: incomplete ");
                 string s = Console.ReadLine();
                 if (bool.TryParse(s, out _))
                     t.StatusCompleted = Convert.ToBoolean(s);
@@ -112,20 +118,48 @@ namespace AdminLibrary
                 Console.WriteLine("Enter the UserId to which task is assigned: ");
                 string s= Console.ReadLine();
                 if (int.TryParse(s, out _))
+                {
                     t.UserId = Convert.ToInt32(s);
-                if (s.Trim() != "" && int.TryParse(s, out _)) break;
+                    foreach (UserModel item in UserList)
+                    {
+                        if (item.UserId == t.UserId)
+                        {
+                            foundUser = true;
+                            break;
+                        }
+                        else index++;
+                    }
+                }
+                    
+                if (s.Trim() != "" && int.TryParse(s, out _) && foundUser) break;
+                if (s.Trim() != "" && int.TryParse(s, out _) && !foundUser) Console.WriteLine($"User with userId: {t.UserId} does not exist!");
+                
                 Console.WriteLine("Enter a valid input !");
             }
             
-
+            t.IsNew = true;
             TaskList.Add(t);
 
             string jsonString = JsonSerializer.Serialize<List<Tasks>>(TaskList);
             File.WriteAllText(JsonFilePath, jsonString);
+
+            
+            
+
+            UserList[index].Update = true;
+            jsonString = JsonSerializer.Serialize<List<UserModel>>(UserList);
+            File.WriteAllText(UserJsonFilePath, jsonString);
+
         }
 
-        public void UpdateTask( string JsonFilePath)
+        public void UpdateTask( string JsonFilePath , string UserJsonFilePath)
         {
+            List<UserModel> UserList = new List<UserModel>();
+            UserList = ReadUser(UserJsonFilePath);
+
+            int Userindex = 0;
+            bool foundUser = false;
+
             int taskId = -1;
             while (true)
             {
@@ -177,7 +211,7 @@ namespace AdminLibrary
 
             while (true)
             {
-                Console.WriteLine("Update the Task Status: ");
+                Console.WriteLine("Update the Task Complete Status -> \n true : complete \n false: incomplete ");
                 string s = Console.ReadLine();
                 if (bool.TryParse(s, out _))
                     TaskList[index].StatusCompleted = Convert.ToBoolean(s);
@@ -187,12 +221,33 @@ namespace AdminLibrary
 
             while (true)
             {
-                Console.WriteLine("Update the UserId to which task is assigned: ");
-                string s= Console.ReadLine();
+                //Console.WriteLine("Update the UserId to which task is assigned: ");
+                //string s= Console.ReadLine();
+                //if (int.TryParse(s, out _))
+                //  TaskList[index].UserId = Convert.ToInt32(s);
+                //if(s.Trim() != "" && int.TryParse(s, out _)) break;
+                //Console.WriteLine("ENter a valid input!");
+
+                Console.WriteLine("Enter the UserId to which task is assigned: ");
+                string s = Console.ReadLine();
                 if (int.TryParse(s, out _))
+                {
                     TaskList[index].UserId = Convert.ToInt32(s);
-                if(s.Trim() != "" && int.TryParse(s, out _)) break;
-                Console.WriteLine("ENter a valid input!");
+                    foreach (UserModel item in UserList)
+                    {
+                        if (item.UserId == TaskList[index].UserId)
+                        {
+                            foundUser = true;
+                            break;
+                        }
+                        else Userindex++;
+                    }
+                }
+
+                if (s.Trim() != "" && int.TryParse(s, out _) && foundUser) break;
+                if (s.Trim() != "" && int.TryParse(s, out _) && !foundUser) Console.WriteLine($"User with userId: {TaskList[index].UserId} does not exist!");
+
+                Console.WriteLine("Enter a valid input !");
             }
             
 
@@ -375,6 +430,7 @@ namespace AdminLibrary
                 if (item.UserId == userId)
                 {
                     found = true;
+                    break;
                 }
                 else index++;
             }

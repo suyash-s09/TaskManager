@@ -18,13 +18,28 @@ string UserjsonFilePath = Path.GetFullPath(sFile);
 void AdminUI()
 {
     Admin admin = new Admin();
+    string username = "";
+    string password = "";
+
+    while (true)
+    {
+        Console.WriteLine("Enter Admin username: ");
+        username = Console.ReadLine();
+
+        if (username.Trim() != "") break;
+        Console.WriteLine("Enter a valid input ! Admin Username cannot be empty!!");
+
+    }
+
+    while (true)
+    {
+        Console.WriteLine("Enter Admin password: ");
+        password = Console.ReadLine();
+        if (password.Trim() != "") break;
+        Console.WriteLine("Enter a valid input ! Password cannot be empty!!");
+    }
 
 
-    Console.WriteLine("Enter Admin username: ");
-    string username = Console.ReadLine();
-
-    Console.WriteLine("Enter Admin password: ");
-    string password = Console.ReadLine();
 
     if (!admin.validateAdmin(username, password))
     {        
@@ -56,7 +71,7 @@ void AdminUI()
 
         switch (input)
         {
-            case "1":admin.CreateTask(TaskjsonFilePath);
+            case "1":admin.CreateTask(TaskjsonFilePath,UserjsonFilePath);
                 break;
 
             case "2":
@@ -64,7 +79,7 @@ void AdminUI()
                 break;
 
             case "3":
-                admin.UpdateTask(TaskjsonFilePath);
+                admin.UpdateTask(TaskjsonFilePath,UserjsonFilePath);
                 break;
 
             case "4":
@@ -99,12 +114,27 @@ void AdminUI()
 void UserUI()
 {
     User user = new User();
+    int userId = -1;
+    string password = "";
+    while (true)
+    {
+        Console.WriteLine("Enter UserId: ");
+        string s = Console.ReadLine();
+        if(int.TryParse(s, out _))
+            userId = Convert.ToInt32(s);
 
-    Console.WriteLine("Enter UserId: ");
-    int userId = Convert.ToInt32(Console.ReadLine());
+        if (s.Trim() != "" && int.TryParse(s, out _)) break;
+        Console.WriteLine("Enter a valid input !");
+    }
 
-    Console.WriteLine("Enter password: ");
-    string password = Console.ReadLine();
+    while (true)
+    {
+        Console.WriteLine("Enter password: ");
+        string s = Console.ReadLine();
+        if (s.Trim() != "") break;
+        Console.WriteLine("Enter a valid input ! Password cannot be empty!!");
+    }
+    
 
     if (!user.ValidateUser(userId, password, UserjsonFilePath))
     {
@@ -123,8 +153,29 @@ void UserUI()
     user.SetUserId(userId);
     user.SetUserPassword(password);
 
+    while (user.Update)
+    {
+        Console.WriteLine("You have been assigned new Tasks !");
+        Console.WriteLine("show: Show the new tasks");
+        Console.WriteLine("dismiss: close the notification");
+
+        string showOrDismiss = Console.ReadLine();
+        switch(showOrDismiss)
+        {
+            case "show":user.showUpdate(TaskjsonFilePath);
+                break;
+
+            case "dismiss":user.dismissUpdate(TaskjsonFilePath);
+                break;
+
+            default: Console.WriteLine("Enter a valid input");
+                break;
+        }
+    }
+
     while (true)
     {
+        Console.WriteLine("\n");
         Console.WriteLine("1: Read Task");
         Console.WriteLine("2: Update Task Status");
         Console.WriteLine("exit: To Exit");

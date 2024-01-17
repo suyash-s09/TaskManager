@@ -13,6 +13,7 @@ namespace UserLibrary
     {
         public int UserId { get; set; }
         public string password { get; set; }
+        public bool Update {  get; set; }
     }
     public class User : UserModel
     {
@@ -40,6 +41,7 @@ namespace UserLibrary
             {
                 if(u.UserId == userId && u.password==password)
                 {
+                    this.Update = u.Update;
                     return true;
                 }
             }
@@ -120,10 +122,35 @@ namespace UserLibrary
 
             string jsonString = JsonSerializer.Serialize<List<Tasks>>(TaskList);
             File.WriteAllText(JsonFilePath, jsonString);
+        }
 
+        public void showUpdate(string JsonFilePath)
+        {
+            List<Tasks> TaskList = new List<Tasks>();
+            TaskList = ReadTask(JsonFilePath);
+            foreach (Tasks item in TaskList)
+            {
+                if (!item.IsNew) continue;
+                item.IsNew = false;
+                Console.WriteLine("\n");
+                Console.WriteLine($" TaskId: {item.TaskId} \n TaskName: {item.TaskName} \n TaskDescription: {item.TaskDescription} \n Status: {item.StatusCompleted}");
+            }
+            this.Update = false;
 
         }
 
+        public void dismissUpdate(string JsonFilePath)
+        {
+            List<Tasks> TaskList = new List<Tasks>();
+            TaskList = ReadTask(JsonFilePath);
+            foreach (Tasks item in TaskList)
+            {
+                if (!item.IsNew) continue;
+                item.IsNew = false;
+            }
+            this.Update = false;
+
+        }
 
 
 

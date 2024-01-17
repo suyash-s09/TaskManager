@@ -1,3 +1,1 @@
-[
-    {"UserId":101,"password":"p101"},{"UserId":1,"password":"p1"}
-]
+[{"UserId":101,"password":"p101","Update":true},{"UserId":1,"password":"p1","Update":false}]

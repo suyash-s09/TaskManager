@@ -12,6 +12,7 @@ namespace TaskLibrary
         public string TaskName { get; set; } = string.Empty;
         public string TaskDescription { get; set; } = string.Empty;
         public bool StatusCompleted { get; set; } = false;
+        public bool IsNew { get; set; }
         public int UserId { get; set; }
 
 
