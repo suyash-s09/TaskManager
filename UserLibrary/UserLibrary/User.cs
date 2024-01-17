@@ -85,8 +85,17 @@ namespace UserLibrary
 
         public void UpdateStatus(string JsonFilePath)
         {
-            Console.WriteLine("Enter the TaskId to Update:");
-            int taskId = Convert.ToInt32(Console.ReadLine());
+            int taskId = -1;
+            while (true)
+            {
+                Console.WriteLine("Enter the TaskId to Update:");
+                string s = Console.ReadLine();
+                if(int.TryParse(s, out _))
+                    taskId = Convert.ToInt32(s);
+                if (s.Trim() != "" && int.TryParse(s, out _)) break;
+                Console.WriteLine("Enter a valid input!");
+            }
+            
 
             List<Tasks> TaskList = new List<Tasks>();
             TaskList = ReadTask(JsonFilePath);
