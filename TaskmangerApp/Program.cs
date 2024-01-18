@@ -166,7 +166,7 @@ void UserUI()
     {
         Console.WriteLine("You have been assigned new Tasks !");
         Console.WriteLine("show: Show the new tasks");
-        Console.WriteLine("dismiss: close the notification");
+        Console.WriteLine("mark: mark as read");
 
         string showOrDismiss = Console.ReadLine();
         switch(showOrDismiss)
@@ -174,7 +174,7 @@ void UserUI()
             case "show":user.showUpdate(TaskjsonFilePath,UserjsonFilePath);
                 break;
 
-            case "dismiss":user.dismissUpdate(TaskjsonFilePath, UserjsonFilePath);
+            case "mark":user.dismissUpdate(TaskjsonFilePath, UserjsonFilePath);
                 break;
 
             default: Console.WriteLine("Enter a valid input");
