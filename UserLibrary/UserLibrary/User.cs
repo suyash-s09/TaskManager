@@ -99,7 +99,12 @@ namespace UserLibrary
             foreach (Tasks item in TaskList)
             {
                 Console.WriteLine("\n");
-                Console.WriteLine($" TaskId: {item.TaskId} \n TaskName: {item.TaskName} \n TaskDescription: {item.TaskDescription} \n Status: {item.StatusCompleted}");
+                Console.WriteLine($" TaskId: {item.TaskId} \n TaskName: {item.TaskName} \n TaskDescription: {item.TaskDescription} \n UserId: {item.UserId}");
+                if (item.StatusCompleted)
+                {
+                    Console.WriteLine("Status: Completed\n");
+                }
+                else Console.WriteLine("Status: Incomplete\n");
             }
         }
 

@@ -45,7 +45,12 @@ namespace AdminLibrary
             TaskList = ReadTask(JsonFilePath);
             foreach (Tasks item in TaskList)
             {
-                Console.WriteLine($" TaskId: {item.TaskId} \n TaskName: {item.TaskName} \n TaskDescription: {item.TaskDescription} \n Status: {item.StatusCompleted} UserId: {item.UserId}\n");
+                Console.WriteLine($" TaskId: {item.TaskId} \n TaskName: {item.TaskName} \n TaskDescription: {item.TaskDescription} \n  UserId: {item.UserId}\n");
+                if (item.StatusCompleted)
+                {
+                    Console.WriteLine("Status: Completed\n");
+                }
+                else Console.WriteLine("Status: Incomplete\n");
             }
         }
 
@@ -104,11 +109,16 @@ namespace AdminLibrary
 
             while (true)
             {
-                Console.WriteLine("Enter the Task Complete Status -> \n true : complete \n false: incomplete ");
+                Console.WriteLine("Enter the Task Complete Status -> \n c : complete \n inc: incomplete ");
                 string s = Console.ReadLine();
-                if (bool.TryParse(s, out _))
-                    t.StatusCompleted = Convert.ToBoolean(s);
-                if (s.Trim() != "" && bool.TryParse(s,out _)) break;
+                bool validInput = true;
+                switch (s)
+                {
+                    case "c":t.StatusCompleted = true; break;
+                    case "inc":t.StatusCompleted = false; break;
+                    default: validInput=false;break;
+                }
+                if (validInput) break;
                 Console.WriteLine("Enter a valid input !");
             }
             int index = 0;
