@@ -68,7 +68,7 @@ void AdminUI()
         Console.WriteLine("exit: To Exit");
 
         string input = Console.ReadLine();
-        if (input == "exit") break;
+        if (input == "exit") return;
 
         switch (input)
         {
@@ -105,6 +105,10 @@ void AdminUI()
 
             case "back":
                 DashBoard();
+                break;
+
+            case "exit":
+                return;
                 break;
 
             default:
@@ -187,7 +191,7 @@ void UserUI()
         Console.WriteLine("exit: To Exit");
 
         string input = Console.ReadLine();
-        if (input == "exit") break;
+        if (input == "exit") return;
 
         switch (input)
         {
@@ -198,6 +202,9 @@ void UserUI()
                 break;
 
             case "back":DashBoard();
+                break;
+
+            case "exit":return;
                 break;
 
             default:

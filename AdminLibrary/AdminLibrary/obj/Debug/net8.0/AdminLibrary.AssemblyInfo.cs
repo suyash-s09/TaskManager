@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AdminLibrary")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+21a5a0cbbd3bcc475de232ac26115747ff18a3ab")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6a5654d8501f2555efabd0564897601e12be299d")]
 [assembly: System.Reflection.AssemblyProductAttribute("AdminLibrary")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AdminLibrary")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
