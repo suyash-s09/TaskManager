@@ -11,6 +11,7 @@
 	  <ProjectReference Include="..\AdminLibrary\AdminLibrary\AdminLibrary.csproj" />
     <ProjectReference Include="..\TaskLibrary\TaskLibrary\TaskLibrary.csproj" />
     <ProjectReference Include="..\UserLibrary\UserLibrary\UserLibrary.csproj" />
+    <ProjectReference Include="..\ValidReadWrite\ValidReadWriteLibrary.csproj" />
   </ItemGroup>
 
 </Project>

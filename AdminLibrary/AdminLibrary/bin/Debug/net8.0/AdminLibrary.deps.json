@@ -9,7 +9,8 @@
       "AdminLibrary/1.0.0": {
         "dependencies": {
           "TaskLibrary": "1.0.0",
-          "UserLibrary": "1.0.0"
+          "UserLibrary": "1.0.0",
+          "ValidReadWriteLibrary": "1.0.0"
         },
         "runtime": {
           "AdminLibrary.dll": {}
@@ -22,10 +23,16 @@
       },
       "UserLibrary/1.0.0": {
         "dependencies": {
-          "TaskLibrary": "1.0.0"
+          "TaskLibrary": "1.0.0",
+          "ValidReadWriteLibrary": "1.0.0"
         },
         "runtime": {
           "UserLibrary.dll": {}
+        }
+      },
+      "ValidReadWriteLibrary/1.0.0": {
+        "runtime": {
+          "ValidReadWriteLibrary.dll": {}
         }
       }
     }
@@ -42,6 +49,11 @@
       "sha512": ""
     },
     "UserLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ValidReadWriteLibrary/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

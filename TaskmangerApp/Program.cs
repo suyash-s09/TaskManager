@@ -3,17 +3,15 @@ using System.Reflection.Metadata;
 using AdminLibrary;
 using UserLibrary;
 using TaskLibrary;
-
-//string TaskjsonFilePath = "../../../../../Database/tasks.json";
-
+using ValidReadWriteLibrary;
 
 string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
 string sFile = System.IO.Path.Combine(sCurrentDirectory, @"../../../../Database/tasks.json");
 string TaskjsonFilePath = Path.GetFullPath(sFile);
-
 sFile = System.IO.Path.Combine(sCurrentDirectory, @"../../../../Database/users.json");
-
 string UserjsonFilePath = Path.GetFullPath(sFile);
+
+ValidReadWrite Validreader = new ValidReadWrite();
 
 void AdminUI()
 {
@@ -21,25 +19,15 @@ void AdminUI()
     string username = "";
     string password = "";
 
-    while (true)
+    while (username=="")
     {
-        Console.WriteLine("Enter Admin username: ");
-        username = Console.ReadLine();
-
-        if (username.Trim() != "") break;
-        Console.WriteLine("Enter a valid input ! Admin Username cannot be empty!!");
-
+        username = Validreader.ValidStringRead("Enter Admin username: ", "Enter a valid input ! Admin Username cannot be empty!!");
     }
 
-    while (true)
+    while (password=="")
     {
-        Console.WriteLine("Enter Admin password: ");
-        password = Console.ReadLine();
-        if (password.Trim() != "") break;
-        Console.WriteLine("Enter a valid input ! Password cannot be empty!!");
+        password = Validreader.ValidStringRead("Enter Admin password: ", "Enter a valid input ! Password cannot be empty!!");
     }
-
-
 
     if (!admin.validateAdmin(username, password))
     {        
@@ -114,9 +102,7 @@ void AdminUI()
             default:
                 Console.WriteLine("Enter a valid Input. ");
                 break;
-        }
-
-       
+        }       
     }
 }
 
@@ -125,25 +111,15 @@ void UserUI()
     User user = new User();
     int userId = -1;
     string password = "";
-    while (true)
+    while (userId == -1)
     {
-        Console.WriteLine("Enter UserId: ");
-        string s = Console.ReadLine();
-        if(int.TryParse(s, out _))
-            userId = Convert.ToInt32(s);
-
-        if (s.Trim() != "" && int.TryParse(s, out _)) break;
-        Console.WriteLine("Enter a valid input !");
+        userId = Validreader.ValidIntRead("Enter UserId: ", "Enter a valid input ! UserId can only be non-negative integer");
     }
 
-    while (true)
+    while (password == "")
     {
-        Console.WriteLine("Enter password: ");
-        password = Console.ReadLine();
-        if (password.Trim() != "") break;
-        Console.WriteLine("Enter a valid input ! Password cannot be empty!!");
+        password = Validreader.ValidStringRead("Enter password: ", "Enter a valid input ! Password cannot be empty!!");
     }
-
 
     if (!user.ValidateUser(userId, password, UserjsonFilePath))
     {
@@ -211,9 +187,7 @@ void UserUI()
                 Console.WriteLine("Enter a valid Input. ");
                 break;
         }
-    }
-
-    
+    }    
 }
 
 void DashBoard()
@@ -243,7 +217,6 @@ void DashBoard()
         Console.WriteLine("Enter a valid input.");
         goto invalidAdminOrUser; 
     }
-
 }
 
 DashBoard();

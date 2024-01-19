@@ -21,3 +21,5 @@ C:\Users\developer\Desktop\TaskManger\TaskmangerApp\obj\Debug\net8.0\ref\Taskman
 C:\Users\developer\Desktop\TaskManger\TaskmangerApp\obj\Debug\net8.0\TaskmangerApp.sourcelink.json
 C:\Users\developer\Desktop\TaskManger\TaskmangerApp\bin\Debug\net8.0\AdminLibrary.dll
 C:\Users\developer\Desktop\TaskManger\TaskmangerApp\bin\Debug\net8.0\AdminLibrary.pdb
+C:\Users\developer\Desktop\TaskManger\TaskmangerApp\bin\Debug\net8.0\ValidReadWriteLibrary.dll
+C:\Users\developer\Desktop\TaskManger\TaskmangerApp\bin\Debug\net8.0\ValidReadWriteLibrary.pdb

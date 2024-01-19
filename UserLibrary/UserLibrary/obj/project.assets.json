@@ -11,6 +11,16 @@
         "runtime": {
           "bin/placeholder/TaskLibrary.dll": {}
         }
+      },
+      "ValidReadWriteLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/ValidReadWriteLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ValidReadWriteLibrary.dll": {}
+        }
       }
     }
   },
@@ -19,11 +29,17 @@
       "type": "project",
       "path": "../../TaskLibrary/TaskLibrary/TaskLibrary.csproj",
       "msbuildProject": "../../TaskLibrary/TaskLibrary/TaskLibrary.csproj"
+    },
+    "ValidReadWriteLibrary/1.0.0": {
+      "type": "project",
+      "path": "../../ValidReadWrite/ValidReadWriteLibrary.csproj",
+      "msbuildProject": "../../ValidReadWrite/ValidReadWriteLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "TaskLibrary >= 1.0.0"
+      "TaskLibrary >= 1.0.0",
+      "ValidReadWriteLibrary >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -55,6 +71,9 @@
           "projectReferences": {
             "C:\\Users\\developer\\Desktop\\TaskManger\\TaskLibrary\\TaskLibrary\\TaskLibrary.csproj": {
               "projectPath": "C:\\Users\\developer\\Desktop\\TaskManger\\TaskLibrary\\TaskLibrary\\TaskLibrary.csproj"
+            },
+            "C:\\Users\\developer\\Desktop\\TaskManger\\ValidReadWrite\\ValidReadWriteLibrary.csproj": {
+              "projectPath": "C:\\Users\\developer\\Desktop\\TaskManger\\ValidReadWrite\\ValidReadWriteLibrary.csproj"
             }
           }
         }

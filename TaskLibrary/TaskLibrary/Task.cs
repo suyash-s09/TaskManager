@@ -14,7 +14,5 @@ namespace TaskLibrary
         public bool StatusCompleted { get; set; } = false;
         public bool IsNew { get; set; }
         public int UserId { get; set; }
-
-
     }
 }

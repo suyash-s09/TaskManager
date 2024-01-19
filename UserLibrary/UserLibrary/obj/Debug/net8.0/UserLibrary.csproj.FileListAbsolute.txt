@@ -14,3 +14,5 @@ C:\Users\developer\Desktop\TaskManger\UserLibrary\UserLibrary\obj\Debug\net8.0\r
 C:\Users\developer\Desktop\TaskManger\UserLibrary\UserLibrary\obj\Debug\net8.0\UserLibrary.pdb
 C:\Users\developer\Desktop\TaskManger\UserLibrary\UserLibrary\obj\Debug\net8.0\ref\UserLibrary.dll
 C:\Users\developer\Desktop\TaskManger\UserLibrary\UserLibrary\obj\Debug\net8.0\UserLibrary.sourcelink.json
+C:\Users\developer\Desktop\TaskManger\UserLibrary\UserLibrary\bin\Debug\net8.0\ValidReadWriteLibrary.dll
+C:\Users\developer\Desktop\TaskManger\UserLibrary\UserLibrary\bin\Debug\net8.0\ValidReadWriteLibrary.pdb

@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 using System.Text.Json;
 using System.Threading.Tasks;
 using TaskLibrary;
-
+using ValidReadWriteLibrary;
 
 namespace UserLibrary
 {
@@ -17,8 +17,7 @@ namespace UserLibrary
         public bool Update {  get; set; }
     }
     public class User : UserModel
-    {
-        
+    {      
         public void SetUserId(int userId)
         {
             this.UserId = userId;
@@ -28,7 +27,6 @@ namespace UserLibrary
         {
             this.password = password;
         }
-        
 
         public bool ValidateUser(int userId, string password, string JsonFilePath)
         {
@@ -51,32 +49,31 @@ namespace UserLibrary
 
         public List<UserModel> ReadUser(string JsonFilePath)
         {
-            using StreamReader reader = new(JsonFilePath);
-            var json = reader.ReadToEnd();
-            List<UserModel> UserList = new List<UserModel>();
 
+            FileStream fileStream = new FileStream(JsonFilePath, FileMode.Open, FileAccess.Read, FileShare.None);
+            using StreamReader reader = new StreamReader(fileStream);            
+            var json = reader.ReadToEnd();
+
+            List<UserModel> UserList = new List<UserModel>();
             List<UserModel> users_list_read = JsonSerializer.Deserialize<List<UserModel>>(json);
 
             foreach (UserModel item in users_list_read.ToList())
             {
                 UserList.Add(item);
             }
-
             return UserList;
-
         }
 
         public List<Tasks> ReadTask(string JsonFilePath)
         {
-
-
-            using StreamReader reader = new(JsonFilePath);
+            FileStream fileStream = new FileStream(JsonFilePath, FileMode.Open, FileAccess.Read, FileShare.None);
+            using StreamReader reader = new StreamReader(fileStream);
             var json = reader.ReadToEnd();
+
+            //using StreamReader reader = new(JsonFilePath);
+            //var json = reader.ReadToEnd();
             List<Tasks> TaskList = new List<Tasks>();
-
             List<Tasks> tasks_list_read = JsonSerializer.Deserialize<List<Tasks>>(json);
-
-
 
             foreach (Tasks item in tasks_list_read)
             {
@@ -85,11 +82,7 @@ namespace UserLibrary
                     TaskList.Add(item);
                 }
             }
-
-
-
             return TaskList;
-
         }
 
         public void printTasks(string JsonFilePath)
@@ -110,17 +103,12 @@ namespace UserLibrary
 
         public void UpdateStatus(string JsonFilePath)
         {
+            ValidReadWrite ValidReader = new ValidReadWrite();
             int taskId = -1;
-            while (true)
+            while (taskId == -1)
             {
-                Console.WriteLine("Enter the TaskId to Update:");
-                string s = Console.ReadLine();
-                if(int.TryParse(s, out _))
-                    taskId = Convert.ToInt32(s);
-                if (s.Trim() != "" && int.TryParse(s, out _)) break;
-                Console.WriteLine("Enter a valid input!");
-            }
-            
+                taskId = ValidReader.ValidIntRead("Enter the TaskId to Update:", "Enter a valid input!");
+            }            
 
             List<Tasks> TaskList = new List<Tasks>();
             TaskList = ReadTask(JsonFilePath);
@@ -154,7 +142,6 @@ namespace UserLibrary
 
             List<UserModel> UserList = new List<UserModel>();
             UserList = ReadUser(UserJsonFilePath);
-
 
             foreach (Tasks item in TaskList)
             {
@@ -209,11 +196,6 @@ namespace UserLibrary
             File.WriteAllText(UserJsonFilePath, jsonString);
 
         }
-
-
-
-
-
 
     }
 }

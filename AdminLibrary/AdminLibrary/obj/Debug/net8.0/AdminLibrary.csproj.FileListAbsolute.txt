@@ -16,3 +16,5 @@ C:\Users\developer\Desktop\TaskManger\AdminLibrary\AdminLibrary\obj\Debug\net8.0
 C:\Users\developer\Desktop\TaskManger\AdminLibrary\AdminLibrary\obj\Debug\net8.0\ref\AdminLibrary.dll
 C:\Users\developer\Desktop\TaskManger\AdminLibrary\AdminLibrary\bin\Debug\net8.0\UserLibrary.dll
 C:\Users\developer\Desktop\TaskManger\AdminLibrary\AdminLibrary\bin\Debug\net8.0\UserLibrary.pdb
+C:\Users\developer\Desktop\TaskManger\AdminLibrary\AdminLibrary\bin\Debug\net8.0\ValidReadWriteLibrary.dll
+C:\Users\developer\Desktop\TaskManger\AdminLibrary\AdminLibrary\bin\Debug\net8.0\ValidReadWriteLibrary.pdb

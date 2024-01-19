@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ValidReadWriteLibrary/1.0.0": {
+        "runtime": {
+          "ValidReadWriteLibrary.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ValidReadWriteLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
