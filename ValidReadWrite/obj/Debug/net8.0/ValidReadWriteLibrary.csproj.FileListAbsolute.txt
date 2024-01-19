@@ -1,0 +1,12 @@
+C:\Users\developer\Desktop\TaskManger\ValidReadWrite\bin\Debug\net8.0\ValidReadWriteLibrary.deps.json
+C:\Users\developer\Desktop\TaskManger\ValidReadWrite\bin\Debug\net8.0\ValidReadWriteLibrary.dll
+C:\Users\developer\Desktop\TaskManger\ValidReadWrite\bin\Debug\net8.0\ValidReadWriteLibrary.pdb
+C:\Users\developer\Desktop\TaskManger\ValidReadWrite\obj\Debug\net8.0\ValidReadWriteLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\developer\Desktop\TaskManger\ValidReadWrite\obj\Debug\net8.0\ValidReadWriteLibrary.AssemblyInfoInputs.cache
+C:\Users\developer\Desktop\TaskManger\ValidReadWrite\obj\Debug\net8.0\ValidReadWriteLibrary.AssemblyInfo.cs
+C:\Users\developer\Desktop\TaskManger\ValidReadWrite\obj\Debug\net8.0\ValidReadWriteLibrary.csproj.CoreCompileInputs.cache
+C:\Users\developer\Desktop\TaskManger\ValidReadWrite\obj\Debug\net8.0\ValidReadWriteLibrary.sourcelink.json
+C:\Users\developer\Desktop\TaskManger\ValidReadWrite\obj\Debug\net8.0\ValidReadWriteLibrary.dll
+C:\Users\developer\Desktop\TaskManger\ValidReadWrite\obj\Debug\net8.0\refint\ValidReadWriteLibrary.dll
+C:\Users\developer\Desktop\TaskManger\ValidReadWrite\obj\Debug\net8.0\ValidReadWriteLibrary.pdb
+C:\Users\developer\Desktop\TaskManger\ValidReadWrite\obj\Debug\net8.0\ref\ValidReadWriteLibrary.dll

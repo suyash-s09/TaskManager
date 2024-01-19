@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\TaskLibrary\TaskLibrary\TaskLibrary.csproj" />
+		<ProjectReference Include="..\..\UserLibrary\UserLibrary\UserLibrary.csproj" />
+		<ProjectReference Include="..\..\ValidReadWrite\ValidReadWriteLibrary.csproj" />
+	</ItemGroup>
+
+</Project>

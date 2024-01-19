@@ -1,0 +1,157 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "AdminLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "TaskLibrary": "1.0.0",
+          "UserLibrary": "1.0.0",
+          "ValidReadWriteLibrary": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AdminLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AdminLibrary.dll": {}
+        }
+      },
+      "TaskLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/TaskLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TaskLibrary.dll": {}
+        }
+      },
+      "UserLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "TaskLibrary": "1.0.0",
+          "ValidReadWriteLibrary": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/UserLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UserLibrary.dll": {}
+        }
+      },
+      "ValidReadWriteLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/ValidReadWriteLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ValidReadWriteLibrary.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AdminLibrary/1.0.0": {
+      "type": "project",
+      "path": "../AdminLibrary/AdminLibrary/AdminLibrary.csproj",
+      "msbuildProject": "../AdminLibrary/AdminLibrary/AdminLibrary.csproj"
+    },
+    "TaskLibrary/1.0.0": {
+      "type": "project",
+      "path": "../TaskLibrary/TaskLibrary/TaskLibrary.csproj",
+      "msbuildProject": "../TaskLibrary/TaskLibrary/TaskLibrary.csproj"
+    },
+    "UserLibrary/1.0.0": {
+      "type": "project",
+      "path": "../UserLibrary/UserLibrary/UserLibrary.csproj",
+      "msbuildProject": "../UserLibrary/UserLibrary/UserLibrary.csproj"
+    },
+    "ValidReadWriteLibrary/1.0.0": {
+      "type": "project",
+      "path": "../ValidReadWrite/ValidReadWriteLibrary.csproj",
+      "msbuildProject": "../ValidReadWrite/ValidReadWriteLibrary.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "AdminLibrary >= 1.0.0",
+      "TaskLibrary >= 1.0.0",
+      "UserLibrary >= 1.0.0",
+      "ValidReadWriteLibrary >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\developer\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\developer\\Desktop\\TaskManger\\TaskmangerApp\\TaskmangerApp.csproj",
+      "projectName": "TaskmangerApp",
+      "projectPath": "C:\\Users\\developer\\Desktop\\TaskManger\\TaskmangerApp\\TaskmangerApp.csproj",
+      "packagesPath": "C:\\Users\\developer\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\developer\\Desktop\\TaskManger\\TaskmangerApp\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\developer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "C:\\Users\\developer\\Desktop\\TaskManger\\AdminLibrary\\AdminLibrary\\AdminLibrary.csproj": {
+              "projectPath": "C:\\Users\\developer\\Desktop\\TaskManger\\AdminLibrary\\AdminLibrary\\AdminLibrary.csproj"
+            },
+            "C:\\Users\\developer\\Desktop\\TaskManger\\TaskLibrary\\TaskLibrary\\TaskLibrary.csproj": {
+              "projectPath": "C:\\Users\\developer\\Desktop\\TaskManger\\TaskLibrary\\TaskLibrary\\TaskLibrary.csproj"
+            },
+            "C:\\Users\\developer\\Desktop\\TaskManger\\UserLibrary\\UserLibrary\\UserLibrary.csproj": {
+              "projectPath": "C:\\Users\\developer\\Desktop\\TaskManger\\UserLibrary\\UserLibrary\\UserLibrary.csproj"
+            },
+            "C:\\Users\\developer\\Desktop\\TaskManger\\ValidReadWrite\\ValidReadWriteLibrary.csproj": {
+              "projectPath": "C:\\Users\\developer\\Desktop\\TaskManger\\ValidReadWrite\\ValidReadWriteLibrary.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
